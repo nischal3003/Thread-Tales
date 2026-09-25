@@ -1,0 +1,42 @@
+.section {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 64px var(--page-pad) 96px;
+  min-height: 50vh;
+}
+
+.section h1 {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  margin: 0 0 40px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 64px 0;
+}
+
+.emptyState p {
+  font-size: 17px;
+  font-weight: 500;
+  margin: 0 0 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

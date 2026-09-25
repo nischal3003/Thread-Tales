@@ -1,0 +1,162 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px 14px 20px;
+  box-shadow: 0 1px 2px rgba(74, 42, 26, 0.05);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: transparent;
+  box-shadow: 0 24px 40px -18px rgba(74, 42, 26, 0.28);
+}
+
+.imageWrap {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 18px;
+}
+
+.imageInner {
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card:hover .imageInner {
+  transform: scale(1.08);
+}
+
+.soldOutImage .imageInner {
+  opacity: 0.5;
+  filter: grayscale(0.4);
+}
+
+.soldOutImage:hover .imageInner {
+  transform: none;
+}
+
+.stockTag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 1;
+}
+
+.newTag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 1;
+  transform: rotate(-5deg) scale(0.6) translateY(8px);
+  opacity: 0;
+}
+
+:global(.reveal.revealed) .newTag {
+  animation: newTagPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.45s forwards;
+}
+
+@keyframes newTagPop {
+  to {
+    opacity: 1;
+    transform: rotate(-5deg) scale(1) translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .newTag {
+    animation: none;
+    opacity: 1;
+    transform: rotate(-5deg);
+  }
+}
+
+.wishlistBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(251, 245, 236, 0.85);
+  color: var(--text);
+  cursor: pointer;
+  backdrop-filter: blur(2px);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.wishlistBtn:hover {
+  transform: scale(1.08);
+}
+
+.wishlistBtn[data-saved="true"] {
+  color: var(--accent);
+}
+
+.quickView {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 13px;
+  border-radius: 8px;
+  transform: translateY(14px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.card:hover .quickView {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.category {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+  padding: 0 4px;
+}
+
+.name {
+  display: block;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 6px;
+  padding: 0 4px;
+  color: var(--text);
+}
+
+.price {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--accent);
+  padding: 0 4px;
+}

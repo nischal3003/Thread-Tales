@@ -1,0 +1,40 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--page-pad);
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.logoWrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(60vw, 340px);
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pct {
+  align-self: flex-end;
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: clamp(32px, 6vw, 64px);
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
