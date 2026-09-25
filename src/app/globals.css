@@ -163,6 +163,11 @@ figcaption {
   color: var(--text);
 }
 
+html.tc-active,
+html.tc-active * {
+  cursor: none;
+}
+
 :focus {
   outline: none;
 }

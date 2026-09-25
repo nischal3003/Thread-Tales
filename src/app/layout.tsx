@@ -4,6 +4,7 @@ import { CartProvider } from "@/lib/cart-context";
 import { WishlistProvider } from "@/lib/wishlist-context";
 import SmoothScroll from "@/components/SmoothScroll";
 import LoadingScreen from "@/components/LoadingScreen";
+import ThreadCursor from "@/components/ThreadCursor";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <LoadingScreen />
         <SmoothScroll />
+        <ThreadCursor />
         <CartProvider>
           <WishlistProvider>{children}</WishlistProvider>
         </CartProvider>

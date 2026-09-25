@@ -1,0 +1,32 @@
+.canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+}
+
+.dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: var(--accent);
+  pointer-events: none;
+  transition: opacity 0.2s ease, width 0.2s ease, height 0.2s ease, margin 0.2s ease, background 0.2s ease;
+}
+
+.dot[data-visible="false"] {
+  opacity: 0;
+}
+
+.dot[data-hover="true"] {
+  width: 15px;
+  height: 15px;
+  margin: -7.5px 0 0 -7.5px;
+  background: transparent;
+  border: 1.5px solid var(--accent);
+}
