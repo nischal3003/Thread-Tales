@@ -1,9 +1,18 @@
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-);
+// Created lazily (not at module scope) so a missing env var doesn't
+// crash Next.js's build-time route analysis — only actual requests fail.
+let client: SupabaseClient | null = null;
+
+function supabase() {
+  if (!client) {
+    client = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    );
+  }
+  return client;
+}
 
 export type ProductSize = { label: string; stock: number };
 
@@ -54,7 +63,7 @@ function mapRow(row: ProductRow): Product {
 const SELECT = "*, product_sizes(label, stock)";
 
 export async function getProducts(): Promise<Product[]> {
-  const { data, error } = await supabase
+  const { data, error } = await supabase()
     .from("products")
     .select(SELECT)
     .order("created_at", { ascending: false });
@@ -63,7 +72,7 @@ export async function getProducts(): Promise<Product[]> {
 }
 
 export async function getProductBySlug(slug: string): Promise<Product | null> {
-  const { data, error } = await supabase
+  const { data, error } = await supabase()
     .from("products")
     .select(SELECT)
     .eq("slug", slug)
@@ -73,7 +82,7 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
 }
 
 export async function getProductById(id: string): Promise<Product | null> {
-  const { data, error } = await supabase
+  const { data, error } = await supabase()
     .from("products")
     .select(SELECT)
     .eq("id", id)
