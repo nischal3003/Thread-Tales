@@ -107,6 +107,7 @@
   border-bottom: 1px solid var(--line);
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  overflow: hidden;
 }
 
 .editorialImage {

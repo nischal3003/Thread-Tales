@@ -121,7 +121,8 @@
 }
 
 .stepper button {
-  width: 38px;
+  width: 44px;
+  height: 44px;
   font-size: 15px;
   font-weight: 700;
 }
