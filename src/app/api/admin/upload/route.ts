@@ -12,12 +12,12 @@ export async function POST(req: NextRequest) {
   const ext = file.name.split(".").pop() || "jpg";
   const path = `${crypto.randomUUID()}.${ext}`;
 
-  const { error } = await supabaseService.storage
+  const { error } = await supabaseService().storage
     .from("product-images")
     .upload(path, await file.arrayBuffer(), { contentType: file.type, upsert: false });
 
   if (error) return NextResponse.json({ error: error.message }, { status: 400 });
 
-  const { data } = supabaseService.storage.from("product-images").getPublicUrl(path);
+  const { data } = supabaseService().storage.from("product-images").getPublicUrl(path);
   return NextResponse.json({ url: data.publicUrl });
 }

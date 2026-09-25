@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
   }
 
-  const { data: product, error } = await supabaseService
+  const { data: product, error } = await supabaseService()
     .from("products")
     .insert({
       slug: body.slug,
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
   if (error) return NextResponse.json({ error: error.message }, { status: 400 });
 
   if (body.sizes?.length) {
-    const { error: sizesError } = await supabaseService
+    const { error: sizesError } = await supabaseService()
       .from("product_sizes")
       .insert(body.sizes.map((s) => ({ product_id: product.id, label: s.label, stock: s.stock })));
     if (sizesError) return NextResponse.json({ error: sizesError.message }, { status: 400 });

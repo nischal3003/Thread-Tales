@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { supabaseService } from "@/lib/supabase/service";
 
 export async function GET() {
-  const { data, error } = await supabaseService.storage.from("product-images").list("", {
+  const { data, error } = await supabaseService().storage.from("product-images").list("", {
     limit: 1000,
     sortBy: { column: "created_at", order: "desc" },
   });
@@ -12,7 +12,7 @@ export async function GET() {
     .filter((f) => f.id)
     .map((f) => ({
       name: f.name,
-      url: supabaseService.storage.from("product-images").getPublicUrl(f.name).data.publicUrl,
+      url: supabaseService().storage.from("product-images").getPublicUrl(f.name).data.publicUrl,
     }));
 
   return NextResponse.json(files);
