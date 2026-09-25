@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
 import styles from "./login.module.css";
 
 export default function AdminLoginPage() {
@@ -31,8 +33,13 @@ export default function AdminLoginPage() {
 
   return (
     <div className={styles.wrap}>
+      <Link href="/" className={styles.brand}>
+        <Image src="/logo-mark.png" alt="" width={26} height={28} className={styles.mark} priority />
+        Thread&amp;Tales
+      </Link>
       <form className={styles.card} onSubmit={handleSubmit}>
         <h1>Admin Login</h1>
+        <p className={styles.sub}>Sign in to manage products and orders.</p>
         <input
           type="password"
           placeholder="Password"

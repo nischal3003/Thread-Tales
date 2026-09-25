@@ -1,10 +1,29 @@
 .wrap {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 28px;
   background: var(--bg);
   padding: 20px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.mark {
+  width: auto;
+  height: 28px;
 }
 
 .card {
@@ -14,6 +33,7 @@
   flex-direction: column;
   gap: 16px;
   padding: 32px;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
 }
@@ -22,6 +42,12 @@
   font-size: 26px;
   font-weight: 900;
   margin: 0;
+}
+
+.sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin: -8px 0 4px;
 }
 
 .error {

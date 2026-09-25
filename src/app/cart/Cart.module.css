@@ -13,8 +13,20 @@
 }
 
 .emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  padding: 64px 0;
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 56px 32px;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+}
+
+.emptyIcon {
+  color: var(--muted);
+  margin-bottom: 20px;
 }
 
 .emptyState p {

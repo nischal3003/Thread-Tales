@@ -119,7 +119,11 @@ export default function ProductClient({ product, related }: { product: Product; 
             </div>
             <div className="seg" style={{ flexWrap: "wrap" }}>
               {product.sizes.map((s) => (
-                <label key={s.label} className="seg-opt" style={s.stock === 0 ? { opacity: 0.4, textDecoration: "line-through" } : undefined}>
+                <label
+                  key={s.label}
+                  className="seg-opt"
+                  style={s.stock === 0 ? { color: "var(--muted)", textDecoration: "line-through" } : undefined}
+                >
                   <input
                     type="radio"
                     name="size"

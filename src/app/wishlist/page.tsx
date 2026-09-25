@@ -60,6 +60,15 @@ export default function WishlistPage() {
         <h1>Your Wishlist</h1>
         {saved.length === 0 ? (
           <div className={styles.emptyState}>
+            <svg className={styles.emptyIcon} viewBox="0 0 24 24" width="40" height="40" aria-hidden="true">
+              <path
+                d="M12 20.5s-7.5-4.6-10-9.3C.4 8 1.7 4.5 5 3.5c2.1-.6 4.2.3 5.3 2C11.5 3.8 13.6 2.9 15.7 3.5c3.3 1 4.6 4.5 3 7.7-2.5 4.7-10 9.3-10 9.3z"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinejoin="round"
+              />
+            </svg>
             <p className="text-muted">Nothing saved yet — tap the heart on anything you love.</p>
             <Link href="/#shop" className="btn btn-primary">
               Shop the Edit
